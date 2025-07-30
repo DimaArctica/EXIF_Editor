@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var dateValueTextView: TextView
     private lateinit var coordsValueTextView: TextView
     private lateinit var cameraValueTextView: TextView
+    private lateinit var imageSizeValue: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         dateValueTextView = findViewById(R.id.dateValueTextView)
         coordsValueTextView = findViewById(R.id.coordsValueTextView)
         cameraValueTextView = findViewById(R.id.cameraValueTextView)
+        imageSizeValue = findViewById(R.id.imageSizeValue)
 
 
         val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
             dateValueTextView.text = dateTime
             cameraValueTextView.text = "$make  $model"
+            imageSizeValue.text = "$width x $height"
         }
     }
 
