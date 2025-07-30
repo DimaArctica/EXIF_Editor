@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         cameraValueTextView = findViewById(R.id.cameraValueTextView)
         imageSizeValue = findViewById(R.id.imageSizeValue)
 
-
         val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 // URI выбранного изображения
