@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/padding_2"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/padding_2"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/padding_2"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="256dp"
+        />
+
+    <ImageView
+        android:id="@+id/mainImage"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:scaleType="center"
+        android:paddingStart="@dimen/padding_1"
+        android:paddingEnd="@dimen/padding_1"
+        app:layout_constraintStart_toStartOf="@id/leftBorder"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toTopOf="@id/topBorder"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBorder"
+        android:src="@drawable/baseline_add_circle_outline_24"
+        />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_1"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        android:text="@string/Date"
+        app:layout_constraintStart_toStartOf="@id/leftBorder"
+        app:layout_constraintTop_toTopOf="@id/bottomBorder"
+        />
+
+    <TextView
+        android:id="@+id/coordsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        android:text="@string/Coordinates"
+        app:layout_constraintStart_toStartOf="@id/dateTextView"
+        app:layout_constraintTop_toBottomOf="@id/dateTextView"
+        />
+
+    <TextView
+        android:id="@+id/cameraTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        android:text="@string/Camera"
+        app:layout_constraintStart_toStartOf="@id/coordsTextView"
+        app:layout_constraintTop_toBottomOf="@id/coordsTextView"
+        />
+
+    <TextView
+        android:id="@+id/dateValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toTopOf="@id/dateTextView"
+        />
+
+    <TextView
+        android:id="@+id/coordsValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toTopOf="@id/coordsTextView"
+        />
+
+    <TextView
+        android:id="@+id/cameraValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toTopOf="@id/cameraTextView"
+        />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="@id/leftBorder"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/padding_2"
+        android:clickable="false"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
