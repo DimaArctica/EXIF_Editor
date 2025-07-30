@@ -1,5 +1,6 @@
 package com.practium.exifeditor
 
+import android.annotation.SuppressLint
 import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
@@ -18,7 +19,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var coordsValueTextView: TextView
     private lateinit var cameraValueTextView: TextView
     private lateinit var imageSizeValue: TextView
+    private lateinit var focalLengthValue: TextView
+    private lateinit var whiteBalanceValue: TextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         coordsValueTextView = findViewById(R.id.coordsValueTextView)
         cameraValueTextView = findViewById(R.id.cameraValueTextView)
         imageSizeValue = findViewById(R.id.imageSizeValue)
+        focalLengthValue = findViewById(R.id.focalLengthValue)
+        whiteBalanceValue = findViewById(R.id.whiteBalanceValue)
 
         val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
@@ -54,12 +60,13 @@ class MainActivity : AppCompatActivity() {
         inputStream?.let { stream ->
             val exif = ExifInterface(stream)
 
-            // Примеры метаданных
             val dateTime = exif.getAttribute(ExifInterface.TAG_DATETIME)
             val make = exif.getAttribute(ExifInterface.TAG_MAKE)
             val model = exif.getAttribute(ExifInterface.TAG_MODEL)
             val width = exif.getAttributeInt(ExifInterface.TAG_IMAGE_WIDTH, 0)
             val height = exif.getAttributeInt(ExifInterface.TAG_IMAGE_LENGTH, 0)
+            val focalLength = exif.getAttribute(ExifInterface.TAG_FOCAL_LENGTH)
+            val whiteBalance = exif.getAttribute(ExifInterface.TAG_WHITE_BALANCE)
 
             // GPS-координаты (если есть)
             val latLong = FloatArray(2)
@@ -72,6 +79,8 @@ class MainActivity : AppCompatActivity() {
             dateValueTextView.text = dateTime
             cameraValueTextView.text = "$make  $model"
             imageSizeValue.text = "$width x $height"
+            focalLengthValue.text = "$focalLength"
+            whiteBalanceValue.text = "${whiteBalance}"
         }
     }
 

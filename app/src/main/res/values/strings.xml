@@ -4,4 +4,6 @@
     <string name="Coordinates">Координаты</string>
     <string name="Camera">Камера</string>
     <string name="image_size">Размер изображения</string>
+    <string name="focal_length">Фокусное расстояние</string>
+    <string name="white_balance">Баланс белого</string>
 </resources>

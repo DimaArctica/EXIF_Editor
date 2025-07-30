@@ -95,8 +95,30 @@
         android:layout_marginTop="@dimen/padding_1"
         android:textSize="@dimen/text_size_1"
         android:text="@string/image_size"
-        app:layout_constraintStart_toStartOf="@id/coordsTextView"
+        app:layout_constraintStart_toStartOf="@id/cameraTextView"
         app:layout_constraintTop_toBottomOf="@id/cameraTextView"
+        />
+
+    <TextView
+        android:id="@+id/focalLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        android:text="@string/focal_length"
+        app:layout_constraintStart_toStartOf="@id/imageSize"
+        app:layout_constraintTop_toBottomOf="@id/imageSize"
+        />
+
+    <TextView
+        android:id="@+id/whiteBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        android:text="@string/white_balance"
+        app:layout_constraintStart_toStartOf="@id/focalLength"
+        app:layout_constraintTop_toBottomOf="@id/focalLength"
         />
 
     <TextView
@@ -137,6 +159,26 @@
         android:textSize="@dimen/text_size_1"
         app:layout_constraintEnd_toEndOf="@id/rightBorder"
         app:layout_constraintTop_toTopOf="@id/imageSize"
+        />
+
+    <TextView
+        android:id="@+id/focalLengthValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toTopOf="@id/focalLength"
+        />
+
+    <TextView
+        android:id="@+id/whiteBalanceValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
+        android:textSize="@dimen/text_size_1"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toTopOf="@id/whiteBalance"
         />
 
     <Button
