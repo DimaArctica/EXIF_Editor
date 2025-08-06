@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/bg_color"
+    android:paddingTop="@dimen/padding_1"
+    android:paddingBottom="@dimen/padding_1">
+
+    <TextView
+        android:id="@+id/nameOfDataEditView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Заглушка"
+        android:textSize="@dimen/text_size_1"
+        android:textColor="@color/greyText"/>
+
+    <EditText
+        android:id="@+id/valueOfDataEdit"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:hint=""
+        android:gravity="right"
+        android:textSize="@dimen/text_size_1"
+        android:textColor="@color/greyText"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>

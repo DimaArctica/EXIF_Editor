@@ -5,191 +5,88 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/white">
+    android:background="@color/bg_color"
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/padding_2"
-        />
+        app:layout_constraintGuide_begin="@dimen/padding_2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/rightBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/padding_2"
-        />
+        app:layout_constraintGuide_end="@dimen/padding_2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/padding_2"
-        />
+        app:layout_constraintGuide_begin="@dimen/padding_2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottomBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="256dp"
-        />
+        app:layout_constraintGuide_begin="256dp"
+        app:layout_constraintVertical_weight="1" />
 
     <ImageView
         android:id="@+id/mainImage"
-        android:layout_height="0dp"
         android:layout_width="0dp"
-        android:scaleType="centerInside"
+        android:layout_height="0dp"
+        android:foreground="?attr/selectableItemBackground"
         android:paddingStart="@dimen/padding_1"
         android:paddingEnd="@dimen/padding_1"
-        app:layout_constraintStart_toStartOf="@id/leftBorder"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/topBorder"
-        app:layout_constraintBottom_toBottomOf="@id/bottomBorder"
+        android:scaleType="centerInside"
         android:src="@drawable/baseline_add_circle_outline_24"
-        />
-
-    <TextView
-        android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_1"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        android:text="@string/Date"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBorder"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
         app:layout_constraintStart_toStartOf="@id/leftBorder"
-        app:layout_constraintTop_toTopOf="@id/bottomBorder"
-        />
+        app:layout_constraintTop_toTopOf="@id/topBorder" />
 
-    <TextView
-        android:id="@+id/coordsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        android:text="@string/Coordinates"
-        app:layout_constraintStart_toStartOf="@id/dateTextView"
-        app:layout_constraintTop_toBottomOf="@id/dateTextView"
-        />
-
-    <TextView
-        android:id="@+id/cameraTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        android:text="@string/Camera"
-        app:layout_constraintStart_toStartOf="@id/coordsTextView"
-        app:layout_constraintTop_toBottomOf="@id/coordsTextView"
-        />
-
-    <TextView
-        android:id="@+id/imageSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        android:text="@string/image_size"
-        app:layout_constraintStart_toStartOf="@id/cameraTextView"
-        app:layout_constraintTop_toBottomOf="@id/cameraTextView"
-        />
-
-    <TextView
-        android:id="@+id/focalLength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        android:text="@string/focal_length"
-        app:layout_constraintStart_toStartOf="@id/imageSize"
-        app:layout_constraintTop_toBottomOf="@id/imageSize"
-        />
-
-    <TextView
-        android:id="@+id/whiteBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        android:text="@string/white_balance"
-        app:layout_constraintStart_toStartOf="@id/focalLength"
-        app:layout_constraintTop_toBottomOf="@id/focalLength"
-        />
-
-    <TextView
-        android:id="@+id/dateValueTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginBottom="@dimen/padding_1"
+        app:layout_constraintStart_toStartOf="@id/leftBorder"
         app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/dateTextView"
-        />
-
-    <TextView
-        android:id="@+id/coordsValueTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/coordsTextView"
-        />
-
-    <TextView
-        android:id="@+id/cameraValueTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/cameraTextView"
-        />
-
-    <TextView
-        android:id="@+id/imageSizeValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/imageSize"
-        />
-
-    <TextView
-        android:id="@+id/focalLengthValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/focalLength"
-        />
-
-    <TextView
-        android:id="@+id/whiteBalanceValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_1"
-        android:textSize="@dimen/text_size_1"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintTop_toTopOf="@id/whiteBalance"
+        app:layout_constraintTop_toBottomOf="@id/bottomBorder"
+        app:layout_constraintBottom_toTopOf="@id/editButton"
         />
 
     <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="@id/leftBorder"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        android:id="@+id/editButton"
+        style="@style/buttonsStyle"
+        android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/padding_2"
-        android:clickable="false"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/clearAllButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/leftBorder" />
+
+    <Button
+        android:id="@+id/clearAllButton"
+        style="@style/buttonsStyle"
+        android:text="Clear All"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editButton" />
+
+    <Button
+        android:id="@+id/saveButton"
+        style="@style/buttonsStyle"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/clearAllButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

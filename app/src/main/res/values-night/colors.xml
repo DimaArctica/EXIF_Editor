@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="baseTextButtonColor">@color/darkBlue</color>
+    <color name="buttonColor">@color/white</color>
+    <color name="bg_color">@color/black</color>
+    <color name="plus_button_color">@color/white</color>
+</resources>

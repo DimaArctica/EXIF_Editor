@@ -48,4 +48,5 @@ dependencies {
     implementation(libs.material)
     implementation(libs.glide.v4142)
     annotationProcessor(libs.compiler.v4142)
+    implementation(libs.androidx.exifinterface)
 }

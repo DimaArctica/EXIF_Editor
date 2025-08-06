@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="greyText">#888</color>
+    <color name="darkBlue">#081822</color>
+    <color name="blue">#121288</color>
+    <color name="baseTextButtonColor">@color/white</color>
+    <color name="buttonColor">@color/blue</color>
+    <color name="bg_color">@color/white</color>
+    <color name="plus_button_color">@color/black</color>
 </resources>

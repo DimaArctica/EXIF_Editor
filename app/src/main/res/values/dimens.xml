@@ -4,4 +4,5 @@
     <dimen name="padding_2">16dp</dimen>
     <dimen name="padding_3">32dp</dimen>
     <dimen name="text_size_1">14sp</dimen>
+    <dimen name="buttonTextSize">14sp</dimen>
 </resources>
