@@ -98,20 +98,33 @@ class MainActivity : AppCompatActivity() {
             val lat = exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE)
             val lon = exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE)
             val iso = exif.getAttribute(ExifInterface.TAG_ISO_SPEED_RATINGS)
+            val aperture = exif.getAttribute(ExifInterface.TAG_APERTURE_VALUE)
+            val lensMake = exif.getAttribute(ExifInterface.TAG_LENS_MAKE)
+            val lensModel = exif.getAttribute(ExifInterface.TAG_LENS_MODEL)
+            val exposure = exif.getAttribute(ExifInterface.TAG_EXPOSURE_TIME)
+            val apertureMax = exif.getAttribute(ExifInterface.TAG_MAX_APERTURE_VALUE)
+            val artist = exif.getAttribute(ExifInterface.TAG_ARTIST)
+            val serialNumber = exif.getAttribute(ExifInterface.TAG_BODY_SERIAL_NUMBER)
 
             exifDataList.clear()
             exifDataAdapter.notifyDataSetChanged()
 
-            exifDataList.add(ExifData("Координаты", "$lat   $lon"))
-            exifDataList.add(ExifData("Дата", "$dateTime"))
-            exifDataList.add(ExifData("Дата 2", "$dateTimeDigitized"))
-            exifDataList.add(ExifData("Камера", "$make"))
-            exifDataList.add(ExifData("Модель", "$model"))
-            exifDataList.add(ExifData("Размер изображения", "$width x $height"))
-            exifDataList.add(ExifData("Фокусное расстояние", "$focalLength mm"))
-            exifDataList.add(ExifData("ISO", "$iso"))
-            exifDataList.add(ExifData("Баланс белого", "$whiteBalance"))
-
+            exifDataList.add(ExifData("Координаты", checkStringForNull(lat) + checkStringForNull(lon)))
+            exifDataList.add(ExifData("Дата", checkStringForNull(dateTime)))
+            exifDataList.add(ExifData("Дата 2", checkStringForNull(dateTimeDigitized)))
+            exifDataList.add(ExifData("Камера", checkStringForNull(make)))
+            exifDataList.add(ExifData("Модель", checkStringForNull(model)))
+            exifDataList.add(ExifData("Размер изображения", checkStringForNull(width.toString()) + " x " + checkStringForNull(height.toString())))
+            exifDataList.add(ExifData("Фокусное расстояние", checkStringForNull(focalLength) + "mm"))
+            exifDataList.add(ExifData("ISO", checkStringForNull(iso)))
+            exifDataList.add(ExifData("Баланс белого", checkStringForNull(whiteBalance.toString())))
+            exifDataList.add(ExifData("Диафрагма", checkStringForNull(aperture)))
+            exifDataList.add(ExifData("Диафрагма Max", checkStringForNull(apertureMax)))
+            exifDataList.add(ExifData("Объектив", checkStringForNull(lensMake)))
+            exifDataList.add(ExifData("Объектив 2", checkStringForNull(lensModel)))
+            exifDataList.add(ExifData("Выдержка", formatExposureTime(checkStringForNull(exposure))))
+            exifDataList.add(ExifData("Artist", checkStringForNull(artist)))
+            exifDataList.add(ExifData("Serial number", checkStringForNull(serialNumber)))
         }
     }
 
@@ -130,6 +143,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun viewInViewMode() {
         recyclerView.adapter = exifDataAdapter
+    }
+
+    private fun checkStringForNull(str: String?): String {
+        return str ?: ""
+    }
+
+    private fun formatExposureTime(expTime: String): String {
+        if (expTime == "") return expTime
+        val time = expTime.toDouble()
+        if (time < 1) {
+            return ("1/" + (1 / time).toString())
+        } else return expTime
     }
 
 }

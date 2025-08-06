@@ -14,7 +14,7 @@ class ExifDataAdapder(
         }
 
         override fun onBindViewHolder(holder: ExifDataViewHolder, position: Int) {
-            holder.bind(dataList[position])
+                holder.bind(dataList[position])
         }
 
         override fun getItemCount(): Int {
