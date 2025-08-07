@@ -6,7 +6,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/buttonTextSize</item>
         <item name="android:layout_marginBottom">@dimen/padding_2</item>
-        <item name="backgroundTint">@color/buttonColor</item>
+        <item name="backgroundTint">@color/colorSecondary</item>
         <item name="android:textColor">@color/baseTextButtonColor</item>
     </style>
 

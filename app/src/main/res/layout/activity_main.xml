@@ -5,8 +5,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="@dimen/padding_1"
+        app:title="EXIF Editor"
+        app:titleTextColor="@color/colorSecondary"
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftBorder"
@@ -40,12 +52,12 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/padding_1"
+        android:layout_marginBottom="@dimen/padding_2"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/editButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/rightBorder"
         app:layout_constraintStart_toStartOf="@id/leftBorder"
-        app:layout_constraintTop_toTopOf="@id/topBorder">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <ImageView
             android:id="@+id/mainImage"
@@ -68,30 +80,30 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/editButton"
-        style="@style/buttonsStyle"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/clearAllButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/leftBorder" />
+<!--    <Button-->
+<!--        android:id="@+id/editButton"-->
+<!--        style="@style/buttonsStyle"-->
+<!--        android:text="Edit"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/clearAllButton"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="@id/leftBorder" />-->
 
-    <Button
-        android:id="@+id/clearAllButton"
-        style="@style/buttonsStyle"
-        android:text="Clear All"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/saveButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editButton" />
+<!--    <Button-->
+<!--        android:id="@+id/clearAllButton"-->
+<!--        style="@style/buttonsStyle"-->
+<!--        android:text="Clear All"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/saveButton"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/editButton" />-->
 
-    <Button
-        android:id="@+id/saveButton"
-        style="@style/buttonsStyle"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/clearAllButton" />
+<!--    <Button-->
+<!--        android:id="@+id/saveButton"-->
+<!--        style="@style/buttonsStyle"-->
+<!--        android:text="Save"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/rightBorder"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/clearAllButton" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

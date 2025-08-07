@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/open_item"
+        android:title="@string/open"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_edit_data"
+        android:title="@string/edit_metadata"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_save"
+        android:title="@string/Save"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_clear_all"
+        android:title="@string/clear_all"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/exit"
+        android:title="@string/exit"
+        app:showAsAction="never"/>
+
+</menu>

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
@@ -21,6 +23,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var exifDataList: MutableList<ExifData>
     private lateinit var exifDataAdapter: ExifDataAdapder
     private lateinit var exifDataEditAdapter: ExifDataEditAdapder
+    private lateinit var mainImage: ImageView
+
+    val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                // URI выбранного изображения
+                Glide.with(this).load(uri).into(mainImage)
+                readExifData(uri)
+                viewInViewMode()
+            }
+        }
 
     @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,52 +45,82 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val mainImage = findViewById<ImageView>(R.id.mainImage)
-        val editButton = findViewById<Button>(R.id.editButton)
-        val saveButton = findViewById<Button>(R.id.saveButton)
-        val clearAllButton = findViewById<Button>(R.id.clearAllButton)
+        mainImage = findViewById<ImageView>(R.id.mainImage)
+//        val editButton = findViewById<Button>(R.id.editButton)
+//        val saveButton = findViewById<Button>(R.id.saveButton)
+//        val clearAllButton = findViewById<Button>(R.id.clearAllButton)
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        mainImage.isClickable = true
 
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         exifDataList = mutableListOf()
 
-        for(i in 1..20){
-           exifDataList.add(ExifData("name $i", "value $i"))
-        }
+//        for(i in 1..20){
+//           exifDataList.add(ExifData("name $i", "value $i"))
+//        }
 
         exifDataAdapter = ExifDataAdapder(exifDataList)
         exifDataEditAdapter = ExifDataEditAdapder(exifDataList)
         recyclerView.adapter = exifDataAdapter
 
-        val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            uri?.let {
-                // URI выбранного изображения
-                Glide.with(this).load(uri).into(mainImage)
-                readExifData(uri)
-                viewInViewMode()
-            }
-        }
+//
 
         mainImage.setOnClickListener {
-            pickImageLauncher.launch("image/*") // MIME-тип для изображений
-            exifDataAdapter.notifyDataSetChanged()
+            //pickImageLauncher.launch("image/*") // MIME-тип для изображений
+            openImage()
+
+            //exifDataAdapter.notifyDataSetChanged()
         }
 
-        editButton.setOnClickListener {
-            viewInEditMode()
-        }
+//        editButton.setOnClickListener {
+//            viewInEditMode()
+//        }
+//
+//        saveButton.setOnClickListener {
+//            viewInViewMode()
+//        }
+//
+//        clearAllButton.setOnClickListener {
+//            clearData()
+//            exifDataAdapter.notifyDataSetChanged()
+//            exifDataEditAdapter.notifyDataSetChanged()
+//        }
+    }
 
-        saveButton.setOnClickListener {
-            viewInViewMode()
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.exit -> {
+                finish()
+                true
+            }
+            R.id.action_edit_data -> {
+                viewInEditMode()
+                true
+            }
+            R.id.open_item -> {
+                openImage()
+                true
+            }
+            R.id.action_save -> {
+                viewInViewMode()
+                true
+            }
+            R.id.action_clear_all -> {
+                clearData()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
+    }
 
-        clearAllButton.setOnClickListener {
-            clearData()
-            exifDataAdapter.notifyDataSetChanged()
-            exifDataEditAdapter.notifyDataSetChanged()
-        }
-
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -126,6 +168,13 @@ class MainActivity : AppCompatActivity() {
             exifDataList.add(ExifData("Artist", checkStringForNull(artist)))
             exifDataList.add(ExifData("Serial number", checkStringForNull(serialNumber)))
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun openImage() {
+        pickImageLauncher.launch("image/*") // MIME-тип для изображений
+        exifDataAdapter.notifyDataSetChanged()
+        mainImage.isClickable = false
     }
 
     private fun clearData() {

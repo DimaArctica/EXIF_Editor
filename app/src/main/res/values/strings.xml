@@ -7,4 +7,10 @@
     <string name="focal_length">Фокусное расстояние</string>
     <string name="white_balance">Баланс белого</string>
     <string name="iso">iso</string>
+    <string name="settings">Настройки</string>
+    <string name="edit_metadata">Редактировать метаданные</string>
+    <string name="exit">Выход</string>
+    <string name="open">Открыть</string>
+    <string name="Save">Сохранить</string>
+    <string name="clear_all">Очистить все метаданные</string>
 </resources>
